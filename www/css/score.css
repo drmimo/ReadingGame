@@ -1,0 +1,155 @@
+body{
+	height: 100vh;
+}
+
+.upperHalf{
+	height: 70vh;
+	background-color: var(--green-clr);
+	color: var(--very-drk-gray);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	font-family: Aljazeera;
+	padding: 30px 0px 90px 0px;
+	position: relative;
+	z-index: -3;
+}
+
+.upperHalf h1{
+	background-color: white;
+	padding: 7px 15px;
+	border-radius: 1.5em;
+}
+
+.upperHalf h3 .bkTitle{
+	color: white;
+}
+
+.upperHalf .score{
+	text-align: center;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+
+.score .number{
+	font-size: 3em;
+	font-weight: bolder;
+}
+
+.score::after{
+	content: '';
+	width: 170px;
+	height: 170px;
+	background-color: rgba(255,255,255, .5);
+	position: absolute;
+	left: -10px;
+	border-radius: 50%;
+	z-index: -1;
+}
+
+.score::before{
+	content: '';
+	width: 190px;
+	height: 190px;
+	background-color: rgba(255,255,255, .3);
+	position: absolute;
+	left: -20px;
+	border-radius: 50%;
+	z-index: -2;
+}
+
+.lowerHalf{
+	height: 30vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; 
+}
+
+.lowerHalf .panel{
+	background-color: white;
+	position: absolute;
+	top: -50px;
+	border-radius: 15px;
+	width: 70%;
+	box-shadow: 0 0 7px rgba(0,0,0,.5);
+	overflow: hidden;
+}
+
+.lowerHalf .panel .grid{
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.lowerHalf .panel .gridItem{
+	font-family: Aljazeera;
+	padding: 5px 12px;
+	color: var(--green-clr);
+	font-size: 1.5em;
+	border: 1px solid var(--blue-gray);
+}
+
+.gridItem img{
+	width: 15px;
+	aspect-ratio: 1;
+	margin-left: 15px;
+}
+
+.gridItem .desc{
+	font-size: .7em;
+	margin-top: -5px;
+	color: var(--light-gray);
+}
+
+.btn-group{
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	top: 60px;
+}
+
+.btn-group .btn{
+	width: 45%;
+	height: 60px;
+	background-color: var(--green-clr);
+	font-family: Aljazeera;
+	font-size: 1.5em;
+	color: white;
+	border-radius: 1.5em;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.btn .imgContainer{
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn img{
+	width: 40px;
+	height: 40px;
+}
+
+.desc .count{
+	font-size: 1.2em;
+	font-weight: bolder;
+	color: var(--drk-green-clr);
+	margin-left: 15px;
+}

@@ -1,0 +1,242 @@
+body{
+	/*background-color: var(--green-clr)*/
+	min-height: 500px;
+	overflow: hidden;
+}
+
+.cover{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--drk-green-clr);
+	z-index: 20;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: top .5s;
+}
+
+.cover .notation{
+	width: 280px;
+	height: 280px;
+	border-radius: 50%;
+	color: white;
+	font-family: Aljazeera;
+	font-weight: bold;
+	text-align: center;
+	font-size: 2em;
+	background-color: var(--green-clr);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 15px solid rgba(255,255,255,.5);
+	padding: 10px;
+}
+
+.cover .notation .time{
+	font-size: 2.5em;
+}
+
+.gameContainer{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+}
+
+.upperHalf{
+	height: 50vh;
+	width: 100%;
+	background-color: var(--green-clr);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.question-card{
+	width: 75%;
+	background-color: white;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0,0,0,.5);
+	padding: 40px 25px;
+	position: absolute;
+	bottom: -50px;
+
+}
+
+.questionTitle{
+	position: relative;
+	color: var(--very-drk-gray);
+	font-family: Alhurra;
+}
+
+.questionTitle .countDown{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: white;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	bottom: 20px;
+	left: calc(50% - 75px);
+}
+
+.questionTitle .countDown svg{
+	width: 150px;
+	aspect-ratio: 1;
+}
+
+.questionTitle .countDown svg .circle1{
+	width: 150px;
+	aspect-ratio: 1;
+	fill: none;
+	stroke-width: 10;
+	stroke-dasharray: 0;
+	stroke: var(--blue-gray);
+	transform: translate(6px, 4px);
+}
+
+.circle2{
+	width: 150px;
+	aspect-ratio: 1;
+	fill: none;
+	stroke-width: 10;
+	stroke-dasharray: 410;
+	stroke-dashoffset: 0;
+	stroke: var(--green-clr);
+	transform: translate(6px, 4px);
+	transition: stroke-dashoffset 1s;
+}
+
+.countDown h4{
+	position: absolute;
+	font-family: Aljazeera;
+	bottom: 15px;
+	text-align: center;
+}
+
+.questionTitle .number{
+	color: var(--drk-green-clr);
+	font-family: Aljazeera;
+}
+
+.questionTxt{
+	font-size: 25px;
+	font-family: Aljazeera;
+	margin-top: 25px;
+	color: var(--light-gray);
+}
+
+.suggestContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 25px 0px;
+	height: 50vh;
+	position: relative;
+}
+
+.suggestContainer ul{
+	position: absolute;
+	top: 75px;
+	list-style: none;
+	width: 60%;
+	padding: 15px;
+}
+
+.suggestContainer ul li{
+	width: 100%;
+	font-size: 1.5em;
+	font-family: Aljazeera;
+	background-color: var(--green-clr);
+	color: var(--blue-gray);
+	border-radius: 2em;
+	padding: 5px 10px;
+	margin: 3px 0px;
+	cursor: pointer;
+	transition: background-color .5s, color .5s, transform .5s;
+}
+
+.suggestContainer li:hover{
+	color: white;
+	background-color: var(--drk-green-clr)
+}
+
+.endCover{	
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.endCover > *{
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	background-color: var(--drk-green-clr);
+	top: 0;
+	z-index: 25;
+}
+
+.endCover .leftPart{
+	left: -100%;
+	transition: left .5s;
+}
+
+.endCover .rightPart{
+	right: -100%;
+	transition: right .5s;
+}
+
+.endNotation{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 280px;
+	aspect-ratio: 1;
+	background-color: white;
+	color: var(--drk-green-clr);
+	border-radius: 50%;
+	font-size: 25px;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: Aljazeera;
+	font-size: 25px;
+}
+
+.endNotation a{
+	text-decoration: none;
+	color: white;
+	border-radius: 2em;
+	background-color: var(--green-clr);
+	padding: 5px 15px;
+}
+
+.shaking{
+	transform-origin: center;
+	animation: shake .5s;
+	animation-iteration-count: 2;
+}
+
+@keyframes shake{
+	0%{
+		transform: rotate(2deg);
+	}
+	50%{
+		transform: rotate(-4deg);
+	}
+	100%{
+		transform: rotate(4deg);
+	}
+}

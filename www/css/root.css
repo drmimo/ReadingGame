@@ -1,0 +1,29 @@
+@import "fonts.css";
+
+:root{
+	--drk-green-clr: #10ac84;
+	--green-clr: #1dd1a1;
+	--very-drk-gray: #222f3e;
+	--light-gray: #8395a7;
+	--blue-gray: #c8d6e5;
+	--title-fnt: Alhurra;
+	--txt-fnt: Aljazeera;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	direction: rtl;
+}
+
+.hoverable{
+	transform: scale(1);
+	cursor: pointer;
+	transition: transform .5s;
+}
+
+.hoverable:hover{
+	transform: scale(1.05);
+}
+

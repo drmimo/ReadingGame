@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>مرحبا بك في المسابقة</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/root.css"/>
+	<!--link rel="stylesheet" type="text/css" media="all and (orientation: landscape)" href="css/identify.css"/-->
+	<link rel="stylesheet" type="text/css" href="css/identify.css"/>
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+	
+	<div class="logo hoverable">
+		
+	</div>
+	<!------------------------DIVISION------------------------>
+	<form class="form" method="get" action="bookIdentity.html">
+		<h4 class="bigTitle">
+			تأكيد الهوّية
+			<img class="hoverable" src="img/qr-camera.svg" alt="here goes qrcode camedra icon" onclick="javascript:startQRScan()"/>
+		</h4>
+		<h6 class="desc">
+			تأكّد من إدخال نفس الرقم الذي على بطاقتك
+		</h6>
+
+		<div class="inputs">
+			<input type="text" class="cible" name="plyID" id="plyID" placeholder="تأكّد من رقم بطاقتك..." maxlength="3" pattern="[0-9]{1,3}" oninput="javascript:only_numbers(this)" required/>
+			<input type="text" name="plyName" id="plyName" placeholder="تأكّد من اسمك..." oninput="javascript:full_fields()" disabled required/>
+		</div>
+
+		<input class="submitBtn hoverable" type="submit" name="submitBtn" value="تأكيد" disabled />
+		
+	</form>
+
+	<div class="alert">
+		<div class="alertMsg">
+			<h3>تأكّدمن سلامة المدخلات</h3>
+			<p>تأكّد من صحّة الرقم ومن عدم استعمال الحروف الأبجدية أو الحروف الخاصة</p>
+			<div class="btn hoverable" onclick="javaascript:hideAlert()">موافق</div>
+		</div>
+	</div>
+
+	<div class="qrCover">
+			<div id="reader"></div>
+	</div>
+
+	<script src="js/html5-qrcode.min.js"></script>
+	<script src="js/triggerScan.js"></script>
+	<script type="text/javascript">
+		function showPlayer(data){
+			if(data){
+				let input = document.querySelector('#plyName')
+				input.value = data[1]
+
+				let evt = new Event('input')
+				input.dispatchEvent(evt)
+			}
+		}
+	</script>
+	<script src="js/inputChecks.js"></script>
+
+</body>
+</html>

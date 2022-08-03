@@ -1,0 +1,84 @@
+@import 'form.css';
+
+body{
+	height: 100vh;
+	display: flex;
+}
+
+body > div{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	padding: 100px;
+}
+
+@media screen and (max-width: 600px){
+	body{
+		display: block;
+	}
+
+	body > div{
+		width: 100%;
+		display: flex;
+	}
+}
+
+.right{
+	background-color: var(--green-clr);
+}
+
+.left{
+	background-color: #eee;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.left h4{
+	font-family: Alhurra;
+	color: var(--very-drk-gray);
+}
+
+.left .panel_notation{
+	width: 100%;
+	background-color: var(--green-clr);
+	color: white;
+	font-family: Aljazeera;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+.left .bkInfos{
+	display: flex;
+	background-color: var(--blue-gray);
+	border-radius: 15px;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+	padding: 15px;
+}
+
+.bkInfos .imgContainer{
+	width: 40%;
+	margin-left: 15px;
+}
+
+.left .bkInfos .imgContainer img{
+	width: 100%;
+	height: auto;
+}
+
+.left table{
+	font-family: Aljazeera;
+}
+
+.left table td:not(.field_name){
+	padding-right: 15px;
+}
+
+.left .field_name{
+	font-size: 14px;
+	font-weight: bold;
+	background-color: var(--light-gray);
+	padding: 0px 10px;
+}

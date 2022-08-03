@@ -1,0 +1,126 @@
+
+.form{
+	min-width: 300px;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,.5);
+	color: var(--light-gray);
+	text-align: center;
+	font-size: 2rem;
+	border-radius: 20px;
+	aspect-ratio: 1;
+	padding: 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.form > *{
+	border: 1px dotted red;
+}
+
+.form .bigTitle{
+	text-align: right;
+	font-family: var(--title-fnt);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--drk-green-clr);
+}
+
+.form .bigTitle img{
+	width: 50px;
+	aspect-ratio: 1;
+	cursor: pointer;
+}
+
+.form .desc{
+	font-family: var(--txt-fnt);
+	text-align: right;
+}
+
+.form .inputs input[type=text]{
+	appearance: textfield;
+	display: block;
+	width: 100%;
+	font-size: 0.7em;
+	font-family: Aljazeera;
+	margin: 5px 0px;
+	outline: none;
+	border: 2px solid var(--blue-gray);
+	border-radius: 2em;
+	padding: 5px 15px;
+	background-color: var(--blue-gray);
+	transition: background-color .5s, border .5s;
+}
+
+.form .inputs input[type=text]:focus{
+	background-color: white;
+	border: 2px solid var(--green-clr);
+}
+
+.form input[type=submit]{
+	width: 100%;
+	font-size: 0.7em;
+	font-family: var(--txt-fnt);
+	background-color: var(--green-clr);
+	color: white;
+	border-radius: 2em;
+	cursor: pointer;
+}
+
+.form input[type=submit]:disabled{
+	background-color: var(--light-gray);
+	color: var(--very-drk-gray);
+}
+
+.alert{
+	position: fixed;
+	width: 100%;
+	height: 100%;;
+	background-color: rgba(0,0,0,.5);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.alert .alertMsg{
+	width: 40%;
+	min-width: 400px;
+	background-color: white;
+	font-family: Aljazeera;
+	color: var(--light-gray);
+	padding: 20px 20px 60px 20px;
+	border-radius: 20px;
+	position: relative;
+}
+
+.alert .alertMsg h3{
+	color: var(--very-drk-gray);
+	font-family: Alhurra;
+}
+
+.alert .alertMsg .btn{
+	background-color: var(--drk-green-clr);
+	color: white;
+	border-radius: 1.5em;
+	font-size: 20;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	padding: 5px 20px;
+}
+
+.qrCover{
+	position: absolute;
+	background-color: rgba(0,0,0,.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+#reader{
+	width: 560px;
+	height: 560px;
+}

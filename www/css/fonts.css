@@ -1,0 +1,19 @@
+@font-face{
+	font-family: Aljazeera;
+	src: url(fonts/al-jazeera-arabic-regular.ttf);
+}
+
+@font-face{
+	font-family: Aljazeera-bold;
+	src: url(fonts/al-jazeera-arabic-bold.ttf);
+}
+
+@font-face{
+	font-family: Alhurra;
+	src: url(fonts/alhurratxtbold.ttf);
+}
+
+@font-face{
+	font-family: Boahmed;
+	src: url(fonts/boahmed-alhour.ttf);
+}

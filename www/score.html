@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>نتيجتك</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/root.css"/>
+	<link rel="stylesheet" type="text/css" href="css/score.css"/>
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+
+<div class="upperHalf">
+	<h1 class="plyName">اسم اللاعب</h1>
+	<h3>نتيجتك في كتاب: <span class="bkTitle">عنوان الكتاب</span></h3>
+	<div class="score">
+		<span class="number">208</span>
+		<div>نقطة</div>
+	</div>
+</div>
+<div class="lowerHalf">
+	<div class="panel">
+		<div class="grid">
+			<div class="gridItem">
+				<img src="img/circle.svg"/><span>الإجابات الصحيحة</span>
+				<div class="desc"><span class="count corrects">00</span>إجابة صحيحة</div>
+			</div>
+			<div class="gridItem">
+				<img src="img/red_circle.svg"/><span style="color: tomato">الإجابات الخاطئة</span>
+				<div class="desc"><span class="count mistakes" style="color: tomato">00</span>إجابة خاطئة</div>
+			</div>
+			<div class="gridItem">
+				<img src="img/circle.svg"/><span>الكتب المقروءة</span>
+				<div class="desc"><span class="count readBooks">00</span>كتاب</div>
+			</div>
+			<div class="gridItem">
+				<img src="img/circle.svg"/><span>المجموع الكلّي للنقاط</span>
+				<div class="desc"><span class="count total">00</span>نقطة</div>
+			</div>
+		</div>
+	</div>
+	<div class="btn-group">
+		<div class="btn hoverable" onclick="javascript:window.location = 'finals.html'">
+			<span class="txt">التصنيف الكلّي </span>
+			<span class="imgContainer">
+				<img src="img/ranking.svg"/>
+			</span>
+		</div>
+		
+		<div class="btn hoverable" onclick="javascript:window.location = 'identify.html'">
+			<span class="txt">متسابق جديد</span>
+			<span class="imgContainer">
+				<img src="img/redo.svg"/>
+			</span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	eel.get_actual_player()(showPlayer)
+	eel.get_actual_book()(showBook)
+	eel.compute_score()(showScore)
+	eel.get_v_x()(showStatistics)
+	eel.count_books_total()(showFinalStats)
+
+	function showStatistics(data)
+	{
+		if(data){
+			//console.log("Here you get Vs and Xs: "+data)
+			let v = document.querySelector('.count.corrects')
+			let x = document.querySelector('.count.mistakes')
+
+			v.innerText = data[0]
+			x.innerText = data[1]
+		}
+		else
+			console.log('No stats of x and v')
+	}
+
+	function showFinalStats(data)
+	{
+		if(data){
+			console.log("Here you get total stats: "+data)
+			let total = document.querySelector('.count.total')
+			let books = document.querySelector('.count.readBooks')
+
+			total.innerText = data[0]
+			books.innerText = data[1]
+		}
+		else
+			console.log('No final  stats bro')
+	}
+
+	function showScore(data)
+	{
+		if(data){
+			let score = document.querySelector('.score .number')
+			score.innerText = data[2]
+		}else{
+			alert('Score problems')
+			alert('الرجاء التأكّد من أنّ الخادم يعمل')
+		}
+	}
+
+	function showPlayer(data){
+		if(data){
+			let playerName = document.querySelector('.plyName')
+			playerName.innerText = data[1]
+		}else{
+			alert('PLayer problems')
+			alert('الرجاء التأكّد من أنّ الخادم يعمل')
+		}
+	}
+
+	function showBook(data){
+		if(data){
+			let bkTitle = document.querySelector('.bkTitle')
+			bkTitle.innerText = data[1]
+		}else{
+			alert('مشكلة كتاب')
+			alert('الرجاء التأكّد من أنّ الخادم يعمل')
+		}
+	}
+
+
+
+</script>
+
+</body>
+</html>

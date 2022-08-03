@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>النتائج النهائية</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/root.css"/>
+	<link rel="stylesheet" type="text/css" href="css/finals.css"/>
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+
+	<div class="upper">
+		<div class="redo hoverable">
+			<a href="identify.html" style="display: block; width: 100%; height: 100%"></a>
+			<div class="tooltip">
+				أنقر هما للبدء من جديد.
+			</div>
+		</div>
+		<div class="ranking_stage">
+			<div class="stage third">
+				<!--img src="img/player.png"/-->
+				<div class="plyName">اسم اللاعب</div>
+				<div class="stageRank thirdRank">
+					<div class="rank">3</div>
+					<div class="marks">348</div>
+					<div>نقطة</div>
+				</div>
+			</div>
+			<!---------------- THIRD ------------------->
+			<div class="stage first">
+				<!--img src="img/player.png"/-->
+				<div class="plyName">اسم اللاعب هنا هنا</div>
+				<div class="stageRank firstRank">
+					<div class="rank">1</div>
+					<div class="marks">528</div>
+					<div>نقطة</div>
+				</div>
+			</div>
+			<!---------------- FIRST ------------------->
+			<div class="stage second">
+				<!--img src="img/player.png"/-->
+				<div class="plyName">اسم اللاعب</div>
+				<div class="stageRank secondRank">
+					<div class="rank">2</div>
+					<div class="marks">390</div>
+					<div>نقطة</div>
+				</div>
+			</div>
+			<!---------------- SECOND ------------------>
+		</div>
+	</div>
+	<div class="lower">
+		<div class="player">
+			<div class="ranked">04</div>
+			<div class="icon"><img src="img/player.svg"></div>
+			<div class="plyName">اسم اللاعب</div>
+			<div class="score">198</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	eel.get_sorted_scores()(showWinners)
+
+	function showWinners(data){
+		if(data){
+			let firstPlace = document.querySelector('.stage.first')
+			let secondPlace = document.querySelector('.stage.second')
+			let thirdPlace = document.querySelector('.stage.third')
+
+			firstPlace.querySelector('.plyName').innerText = data[0][1]
+			firstPlace.querySelector('.marks').innerText = data[0][2]
+
+			secondPlace.querySelector('.plyName').innerText = data[1][1]
+			secondPlace.querySelector('.marks').innerText = data[1][2]
+
+			thirdPlace.querySelector('.plyName').innerText = data[2][1]
+			thirdPlace.querySelector('.marks').innerText = data[2][2]
+
+			let lower = document.querySelector('.lower')
+			let player = document.querySelector('.lower .player')
+			console.log(player)
+
+			for(let counter = 3; counter < data.length; counter++){
+				let tmp = player.cloneNode(true)
+
+				//console.log(counter, '| data length: '+ data.length)
+				console.log(tmp)
+
+				tmp.querySelector('.ranked').innerText = counter + 1
+				tmp.querySelector('.plyName').innerText = data[counter][1]
+				tmp.querySelector('.score').innerText = data[counter][2]
+
+				lower.appendChild(tmp)
+			}
+
+			player.style.display = "none"
+
+		}else{
+			alert('تتأكّد من اتصالك بالخادم')
+		}
+	}
+</script>
+</body>
+</html>

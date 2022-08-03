@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ركّز جيّدا</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/quiz.css"/>
+	<link rel="stylesheet" type="text/css" href="css/root.css"/>
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+
+<div class="cover">
+	<div class="notation">
+		<div>
+		اِنتظر
+		<div class="time">03</div>
+		ثانية
+		</div>
+	</div>
+</div>
+
+<div class="gameContainer">
+	<div class="upperHalf">
+		<div class="question-card">
+			<h1 class="questionTitle">
+				السؤال <span class="number">1 من 10</span>
+				<div class="countDown">
+					<svg>
+						<circle	class="circle1" cx="70" cy="70" r="65"></circle>
+						<circle	class="circle2" cx="70" cy="70" r="65"></circle>
+					</svg>
+					<h4><span class="seconds">03</span><br/> ثانية</h4>
+				</div>
+			</h1>
+			<div class="questionTxt">
+				في القصّة التي قرأتها، وجدت انّ الراعي لم يكن ينتظر أي شيء ليحصل لكنه فجأة حصل شيء غيّر مجرى القصّة تماما، ماذا كان ذلك الشيء المفاجئ؟
+			</div>
+		</div>
+	</div>
+	<div class="suggestContainer">
+		<ul>
+			<li class="suggestItem hoverable" onclick="javascript:pass_to_next(this)">الاقتراح الأول</li>
+			<li class="suggestItem hoverable" onclick="javascript:pass_to_next(this)">الاقتراح الثاني</li>
+			<li class="suggestItem hoverable" onclick="javascript:pass_to_next(this)">الاقتراح الثالث</li>
+			<li class="suggestItem hoverable" onclick="javascript:pass_to_next(this)">الاقتراح الرابع</li>
+		</ul>
+	</div>
+</div>
+
+<div class="endCover">
+	<div class="leftPart"></div>
+	<div class="rightPart">
+		<div class="endNotation">
+			<p>انتهى!</p>
+			<a class="hoverable" href="score.html">النتيجة</a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/countDown.js"></script>
+<script type="text/javascript">
+	let url_params = new URLSearchParams(window.location.search)
+	eel.set_actual_book(url_params.get('bkID'))
+	let questions = null
+	let level = 0, current = 0;
+
+	let neededTime = document.querySelector('.seconds')
+
+	eel.get_questions()(store_questions)
+
+	function load_next_question(current){
+
+		if(questions[current] != undefined){
+			let qstTxt = document.querySelector('.questionTxt')
+			let suggestions = document.querySelectorAll('.suggestContainer ul li')
+			let order = document.querySelector('.questionTitle .number')
+			order.innerText = (current+1) + ' من '+questions.length
+
+			//console.log('Loaded data, questions n° '+current)
+
+			qstTxt.innerText = questions[current][2]
+			qstTxt.parentElement.classList.remove('shaking')
+			qstTxt.parentElement.classList.add('shaking')
+			window.setTimeout(()=>{
+				qstTxt.parentElement.classList.remove('shaking')
+			}, 1500)
+
+			suggestions[0].innerText = questions[current][3]
+			suggestions[1].innerText = questions[current][4]
+			suggestions[2].innerText = questions[current][5]
+			suggestions[3].innerText = questions[current][6]
+		}else{
+			endGame()
+		}
+	}
+
+	function pass_to_next(chosen){
+
+		eel.store_answers(questions[current][0], chosen.innerText, questions[current][7])
+
+		current += 1
+		load_next_question(current)
+	}
+
+	function store_questions(data){
+		questions = data
+
+		if(data){
+			eel.get_book_level()(set_needed_time)
+			load_next_question(current)
+		}else{
+			alert('No loaded questions')
+		}
+	}
+
+	function set_needed_time(data){
+		level = data[1]
+		neededTime.innerText = 30 * data[1]
+	}
+</script>
+</body>
+</html>

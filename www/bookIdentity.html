@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>هوية الكتاب</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width initial-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="css/root.css"/>
+	<link rel="stylesheet" type="text/css" href="css/book.css"/>
+	<script type="text/javascript" src="/eel.js"></script>
+	<script src="js/html5-qrcode.min.js"></script>
+	<script src="js/triggerScan.js"></script>
+</head>
+<body>
+<div class="right">
+	
+	<form class="form" method="get" action="quiz.html">
+		<h4 class="bigTitle">
+			الكتاب المقروء
+			<img class="hoverable" src="img/qr-camera.svg" alt="here goes qrcode camedra icon" onclick="javascript:startQRScan()"/>
+		</h4>
+		<h6 class="desc">
+			أدخل رقم الكتاب، تأكّد من أنّه نفس الكتاب الذي قرأته للتوّ
+		</h6>
+
+		<div class="inputs">
+			<input class="cible" type="text" name="bkID" id="bkID" placeholder="تأكّد من رقم الكتاب..." oninput="javascript:only_numbers(this)" required/>
+			<input type="text" name="bkTitle" id="bkTitle" placeholder="تأكّد من عنوان الكتاب..." oninput="javascript:full_fields_book()" disabled required/>
+		</div>
+
+		<input class="submitBtn hoverable" type="submit" name="submitBtn" value="تأكيد" disabled />
+		
+	</form>
+
+</div>
+<div class="left">
+	
+	<h4>معلومات الكتاب</h4>
+	<div class="panel_notation">تحقق جيدا من أنّ   غلاف الكتاب الذي قرأته هو نفسه الغلاف الظاهرة في الصورة بالأسفل، وتأكّد أيضا من صحّة باقي المعلومات</div>
+	<div class="bkInfos">
+		<div class="imgContainer"><img id="cover" src="img/example.jpg"/></div>
+		<div class="infos">
+			<table>
+				<tr><td class="field_name">العنوان</td><td id="title">عنوان الكتاب</td></tr>
+				<tr><td class="field_name">المؤلّف:</td><td id="author">صاحب الكتاب</td></tr>
+				<tr><td class="field_name">عدد الصفحات:</td><td id="pages">288</td></tr>
+				<tr><td class="field_name">مستوى الكتاب:</td><td id="level">3</td></tr>
+				<!--tr><td class="field_name">ملخص:</td><td>في هذا الكتاب يحكي المؤلف قصّة عجيبة عن الوفاء والإخلاص الذي قلّ في زمنه وزمننا هذا، حيث يسعى لغاية هي توضيح أهمية الوفاء في بناء مجتمع سليم خالٍ من الأمراض القلبية والأحقاد والغلّ</td></tr-->
+			</table>
+		</div>
+	</div>
+
+	
+
+</div>
+
+<div class="alert">
+	<div class="alertMsg">
+		<h3>تأكّدمن سلامة المدخلات</h3>
+		<p>
+			تأكّد من صحّة الرقم ومن عدم استعمال الحروف الأبجدية أو الحروف الخاصة
+			<br/><b>تأكّد من أنّك لم تقرا الكتاب من قبل</b>
+		</p>
+		<div class="btn hoverable" onclick="javaascript:hideAlert()">موافق</div>
+	</div>
+</div>
+
+<div class="qrCover">
+	<div id="reader"></div>
+</div>
+
+<script type="text/javascript">
+
+	function get_params(){
+		let url_params = new URLSearchParams(window.location.search)
+		eel.set_actual_player(url_params.get('plyID'))
+	}
+
+	get_params()
+
+	function showBooks(data){
+
+		let input = document.querySelector('#bkTitle')
+		if(data){
+			input.value = data[1]
+
+			let  evt = new Event('input')
+			input.dispatchEvent(evt)
+
+			let title = document.querySelector('#title')
+			title.innerText = data[1]
+
+			let author = document.querySelector('#author')
+			author.innerText = data[3]
+
+			let pages = document.querySelector('#pages')
+			pages.innerText = data[4]
+
+			let level = document.querySelector('#level')
+			level.innerText = data[2]
+
+			let cover = document.querySelector('#cover')
+			cover.src = '/img/'+data[5]
+		}else{
+			showAlert()
+			let submitBtn = document.querySelector('.submitBtn')
+			input.value =""
+			submitBtn.disabled = true
+		}
+	}
+</script>
+<script src="js/inputChecks.js"></script>
+
+</body>
+</html>
