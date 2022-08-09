@@ -1,0 +1,21 @@
+:root{
+    --principal: #00dd55;
+    --green-clr: #00dd55;
+   --gray-clr: #353535;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+}
+
+.hoverable{
+    transition: transform .5s;
+}
+
+.hoverable:hover{
+    transform: scale(1.15);
+}

@@ -1,0 +1,48 @@
+.btn{
+    font-size: 1.5em;
+    border:none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 40px;
+    transition: transform .5s;
+    margin: 5px;
+    border: 2px solid #aaa;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.validate{
+    color: white;
+    text-shadow: 0 0 5px rgba(0,0,0,.5);
+    background-color: var(--principal);
+}
+
+.input_fields label{
+    cursor: pointer;
+    display: block;
+}
+
+.input_fields input[type=text], .input_fields input[type=number], select, textarea{
+    width: 300px;
+    border: 2px solid #ccc;
+    background-color: #eee;
+    font-size: 1.5em;
+    padding: 3px 10px;
+    outline-color: #00ACED;
+    /*display: block;*/
+    margin: 5px 0px;
+}
+
+.input_fields input[type=file]{
+    display: none;
+}
+
+textarea{
+    width: 600px;
+    height: 100px;
+    resize: none;
+}

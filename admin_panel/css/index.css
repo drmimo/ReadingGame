@@ -1,0 +1,56 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-clr);
+}
+
+.container{
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255,255,255,.2);
+    border-radius: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container > *{
+    margin: 10px;
+    border-radius: 15px;
+    color : var(--green-clr);
+}
+
+.container .mini-card{
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.mini-card a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.mini-card .label{
+    margin-top: 10px;
+    transition: background-color 0.5s, color 0.5s;
+    padding: 7px 0px;
+    border-radius: 2em;
+}
+
+.mini-card:hover .label{
+    background-color: var(--green-clr);
+    color: white;
+}
+
+.container .mini-card img{
+    width: 60px;
+}
+
