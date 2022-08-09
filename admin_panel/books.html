@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <link rel="stylesheet" href="css/root.css"/>
+        <link rel="stylesheet" href="css/dashboard.css"/>
+        <script src="js/tabs.js" defer></script>
+        <script type="text/javascript" src="eel.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo"><img src="img/logo_bg.svg" alt="game logo here"></div>
+            <div class="title">لوحة التحكم</div>
+            <div class="avatar"></div>
+        </header>
+        <main>
+            <aside>
+                <ul id="nav">
+                    <li class="tabItem active">إضافة كتاب</li>
+                    <li class="tabItem">تعديل كتاب</li>
+                    <li class="tabItem">إضافة أسئلة</li>
+                </ul>
+            </aside>
+            <div class="tabs">
+                <article class="tabContent active">
+                    <h1>إضافة كتاب</h1>
+                    <h4>تأكّد من ملء كلّ الحقول</h4>
+                    <div class="input_fields">
+                        <div class="row">
+                            <input class="lettersOnlyInput" type="text" name="bkTitle" id="bk_title" placeholder="عنوان الكتاب" required  />
+                        </div>
+                        <!--label for="bk_author">مؤلف الكتاب</label-->
+                        <div class="row">
+                            <input class="lettersOnlyInput" type="text" name="author" id="bk_author" placeholder="مؤلف الكتاب" required  />
+                        </div>
+                        <!--label for="bk_pages">عدد صفحات الكتاب</label-->
+                        <div class="row">
+                            <input type="number" name="pages" id="bk_pages" placeholder="عدد صفحات الكتاب" required min="10"/>
+                        </div>
+                        <!--label for="bk_level">مستوى الكتاب</label-->
+                        <div class="row">
+                            <input type="number" name="level" id="bk_level" placeholder="مستوى الكتاب" required min="1" />
+                        </div>
+                        <label for="bk_cover" class="file_label">غلاف الكتاب</label>
+                        <input type="file" name="cover" id="bk_cover" required  />
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn validate" onclick="javascript:putBook(this)">موافق</button>
+                        <button class="btn cancel">تفريغ</button>
+                    </div>
+
+                    <div class="list">
+                        <h3>قائمة الكتب المسجلة</h3>
+                        <ol>
+                            <li><span class="num">0</span><b>كتاب حاليا</b></li>
+                        </ol>
+                    </div>
+                </article>
+                <article class="tabContent">
+                    <h1>تعديل كتاب</h1>
+                    <h4>تأكّد من ملء كلّ الحقول</h4>
+                    <div class="input_fields updateForm">
+                        <select name="bkID" id="bk_id" onchange="javascript:eel.load_book(this.value)(loadBookInfos)">
+                            <option value="">اختر رقم الكتاب</option>
+                        </select>
+                        <!--label for="bk_title">عنوان الكتاب</label-->
+                        <div class="row">
+                            <input class="lettersOnlyInput" type="text" name="bkTitle" id="bk_title" placeholder="عنوان الكتاب" required  />
+                        </div>
+                        <!--label for="bk_author">مؤلف الكتاب</label-->
+                        <div class="row">
+                            <input class="lettersOnlyInput" type="text" name="author" id="bk_author" placeholder="مؤلف الكتاب" required  />
+                        </div>
+                        <!--label for="bk_pages">عدد صفحات الكتاب</label-->
+                        <div class="row">
+                            <input type="number" name="pages" id="bk_pages" placeholder="عدد صفحات الكتاب" required min="10"/>
+                        </div>
+                        <!--label for="bk_level">مستوى الكتاب</label-->
+                        <div class="row">
+                            <input type="number" name="level" id="bk_level" placeholder="مستوى الكتاب" required min="1" />
+                        </div>
+                        <label for="bk_cover_updating" class="file_label">غلاف الكتاب</label>
+                        <input type="file" name="cover_update" id="bk_cover_updating" />
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn validate" onclick="javascript:updateBook(this)">موافق</button>
+                        <button class="btn cancel">تفريغ</button>
+                    </div>
+
+                </article>
+                <article class="tabContent">
+                    <h1>إضافة الأسئلة</h1>
+                    <h4>تأكّد من ملء كلّ الحقول</h4>
+                    <div class="input_fields">
+                        <select name="bkID" id="qst_bk_id" onload="javascript:eel.loadBooksList()(fillWithIDs)">
+                            <option value="">اختر رقم الكتاب</option>
+                        </select>
+                        <textarea name="qstTxt" id="qst_txt" placeholder="نص السؤال ..."></textarea>
+                        <!--label for="bk_title">عنوان الكتاب</label-->
+                        <div class="row">
+                            <input type="radio" name="correct" checked/>
+                            <input class="lettersOnlyInput" type="text" name="sggst1" id="qst_sggst1" placeholder="الاقتراح الأول" />
+                        </div>
+                        <!--label for="bk_author">مؤلف الكتاب</label-->
+                        <div class="row">
+                            <input type="radio" name="correct"/>
+                            <input class="lettersOnlyInput" type="text" name="sggst2" id="qst_sggst2" placeholder="الاقتراح الثاني" />
+                        </div>
+                        <!--label for="bk_pages">عدد صفحات الكتاب</label-->
+                        <div class="row">
+                            <input type="radio" name="correct"/>
+                            <input class="lettersOnlyInput" type="text" name="sggst3" id="qst_sggst3" placeholder="الاقتراح الثالث" />
+                        </div>
+                        <!--label for="bk_level">مستوى الكتاب</label-->
+                        <div class="row">
+                            <input type="radio" name="correct"/>
+                            <input class="lettersOnlyInput" type="text" name="sggst4" id="qst_sggst4" placeholder="الاقتراح الرابع"/>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn validate" onclick="javascript:putQuestion(this)">موافق</button>
+                        <button class="btn cancel">تفريغ</button>
+                    </div>
+
+                    <div class="list">
+                        <h3>كتب بلا أسئلة</h3>
+                        <ol>
+                            <li><span class="num">00</span><b>كتاب</b></li>
+                        </ol>
+                    </div>
+
+                </article>
+            </div>
+	</main>
+	<script src="js/booksOps.js"></script>
+	<script>
+        let onlyLettersInputs = document.querySelectorAll('.lettersOnlyInput');
+        let arabicCharUnicodeRange = /[\u0600-\u06FF]/;
+
+        onlyLettersInputs.forEach((x)=>{
+            x.addEventListener('input', (e)=>{
+                if(!arabicCharUnicodeRange.test(x.value)){
+                    alert('STOP! Arabic letters ONLY!')
+                    x.value = ""
+                }
+            })
+        })
+	</script>
+    </body>
+</html>
